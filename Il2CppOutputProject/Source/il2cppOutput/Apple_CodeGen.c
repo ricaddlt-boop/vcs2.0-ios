@@ -1,0 +1,177 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+extern void iOSStoreBindings_SetUnityPurchasingCallback_m57DF54DDD0708A598BCBBA24C46C8C457B066453 (void);
+extern void iOSStoreBindings_RestoreTransactions_m9592AABF2B7E18298C7288CFFE7F496368F0D8B6 (void);
+extern void iOSStoreBindings_RefreshAppReceipt_mE86D6219EF6962A6A0F804AC5B2FF521B157258B (void);
+extern void iOSStoreBindings_AddTransactionObserver_m2CFDF0F0F2691B5E6D28B4979073866E0625605B (void);
+extern void iOSStoreBindings_SetApplicationUsername_m4F95534558A83124589CC6B480DC7CEEED47072F (void);
+extern void iOSStoreBindings_RetrieveProducts_m50867667A16ED72DAA72FD8BFFAB63213F1B594E (void);
+extern void iOSStoreBindings_Purchase_mCBC5A2C21E0AFF67D6D8F0441D52F71D08EDDD24 (void);
+extern void iOSStoreBindings_FinishTransaction_m94E928AE4945A5530189CC53960117809F4557D5 (void);
+extern void iOSStoreBindings_get_appReceipt_mE7F12BE3E872BEBB4193A9E4ABEC6420D0548D53 (void);
+extern void iOSStoreBindings_get_canMakePayments_m43F4AD1745915270AE9DEC2DAB15FADD917C8E9B (void);
+extern void iOSStoreBindings_get_simulateAskToBuy_m306AB95A1B1AB30107EDA8D0D972485C6F5B8F7A (void);
+extern void iOSStoreBindings_set_simulateAskToBuy_m0E74267D78C4EC43D7A62AD7F355A135375AAB7A (void);
+extern void iOSStoreBindings_SetStorePromotionOrder_mA4BB909046E330F5F892167B3DA760C40939685E (void);
+extern void iOSStoreBindings_SetStorePromotionVisibility_mBBDD7FE1C75EF738C0AB97BF83F6A0CD600A2117 (void);
+extern void iOSStoreBindings_GetTransactionReceiptForProductId_mA2F22245B54B0DD9D33303A406FC569FD43EA56F (void);
+extern void iOSStoreBindings_InterceptPromotionalPurchases_m15BCB485AF4FDB7186859CF76671EF7829F813C4 (void);
+extern void iOSStoreBindings_ContinuePromotionalPurchases_m498DF8E0138F9429231573B17ED42D63629D2F19 (void);
+extern void iOSStoreBindings__ctor_m26D067E978BB53B0868E869244C403F80E15324E (void);
+extern void OSXStoreBindings_SetUnityPurchasingCallback_mC4A9917AB2F7D8B0D19B769B04E9580B6512FF14 (void);
+extern void OSXStoreBindings_RestoreTransactions_mD4B7D1E2725A5F60F76743C26011991BE5F5DE52 (void);
+extern void OSXStoreBindings_RefreshAppReceipt_m4B9ECD88BA3E326D17DCA0679EFF6ED66D675625 (void);
+extern void OSXStoreBindings_AddTransactionObserver_m8A402A9D588C05131997330E6094ACEAB4126B92 (void);
+extern void OSXStoreBindings_SetApplicationUsername_m77F969D976CD9798B1924554B4B78E0C37AB55CB (void);
+extern void OSXStoreBindings_RetrieveProducts_m72448C8AC79D468D9E30B181C1D6CCBB44234745 (void);
+extern void OSXStoreBindings_Purchase_mF0A9FEBB05E5E1A197A92CFD3B3A3EDE3E1743B8 (void);
+extern void OSXStoreBindings_FinishTransaction_m673BB3D273F4BC82E013BB532286370BD1FCA335 (void);
+extern void OSXStoreBindings_get_appReceipt_mE5D943D8CA65F26CB455790C9C4E1A80FFD8351C (void);
+extern void OSXStoreBindings_get_canMakePayments_m4685D0E916AA2A0F1858A119311FC3B684311508 (void);
+extern void OSXStoreBindings_get_simulateAskToBuy_mE002324D1785B5F760CFAF99CBA88F62A6FB9DC8 (void);
+extern void OSXStoreBindings_set_simulateAskToBuy_mF1A64A166C9FFFB2B2DA3C1E1627E1B6F3AACD1D (void);
+extern void OSXStoreBindings_SetStorePromotionOrder_mCB6BD5802C0E550CEE75C6D50209D1F7969D98AF (void);
+extern void OSXStoreBindings_SetStorePromotionVisibility_m9F321712514487F5D091F101660130527BE6DF3E (void);
+extern void OSXStoreBindings_GetTransactionReceiptForProductId_mB592DE41EBA85AAFAB55C19F6832BE45FA1DF8DC (void);
+extern void OSXStoreBindings_InterceptPromotionalPurchases_m8E0B47856EDD0EC273DE13DD62EBC48A27C9B4BF (void);
+extern void OSXStoreBindings_ContinuePromotionalPurchases_mA4749703FB5136922BD211E5C4ED80B731F6290E (void);
+extern void OSXStoreBindings__ctor_m62C3AA5C49EFE7E303AEEF295006C77332274AA7 (void);
+static Il2CppMethodPointer s_methodPointers[50] = 
+{
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	iOSStoreBindings_SetUnityPurchasingCallback_m57DF54DDD0708A598BCBBA24C46C8C457B066453,
+	iOSStoreBindings_RestoreTransactions_m9592AABF2B7E18298C7288CFFE7F496368F0D8B6,
+	iOSStoreBindings_RefreshAppReceipt_mE86D6219EF6962A6A0F804AC5B2FF521B157258B,
+	iOSStoreBindings_AddTransactionObserver_m2CFDF0F0F2691B5E6D28B4979073866E0625605B,
+	iOSStoreBindings_SetApplicationUsername_m4F95534558A83124589CC6B480DC7CEEED47072F,
+	iOSStoreBindings_RetrieveProducts_m50867667A16ED72DAA72FD8BFFAB63213F1B594E,
+	iOSStoreBindings_Purchase_mCBC5A2C21E0AFF67D6D8F0441D52F71D08EDDD24,
+	iOSStoreBindings_FinishTransaction_m94E928AE4945A5530189CC53960117809F4557D5,
+	iOSStoreBindings_get_appReceipt_mE7F12BE3E872BEBB4193A9E4ABEC6420D0548D53,
+	iOSStoreBindings_get_canMakePayments_m43F4AD1745915270AE9DEC2DAB15FADD917C8E9B,
+	iOSStoreBindings_get_simulateAskToBuy_m306AB95A1B1AB30107EDA8D0D972485C6F5B8F7A,
+	iOSStoreBindings_set_simulateAskToBuy_m0E74267D78C4EC43D7A62AD7F355A135375AAB7A,
+	iOSStoreBindings_SetStorePromotionOrder_mA4BB909046E330F5F892167B3DA760C40939685E,
+	iOSStoreBindings_SetStorePromotionVisibility_mBBDD7FE1C75EF738C0AB97BF83F6A0CD600A2117,
+	iOSStoreBindings_GetTransactionReceiptForProductId_mA2F22245B54B0DD9D33303A406FC569FD43EA56F,
+	iOSStoreBindings_InterceptPromotionalPurchases_m15BCB485AF4FDB7186859CF76671EF7829F813C4,
+	iOSStoreBindings_ContinuePromotionalPurchases_m498DF8E0138F9429231573B17ED42D63629D2F19,
+	iOSStoreBindings__ctor_m26D067E978BB53B0868E869244C403F80E15324E,
+	OSXStoreBindings_SetUnityPurchasingCallback_mC4A9917AB2F7D8B0D19B769B04E9580B6512FF14,
+	OSXStoreBindings_RestoreTransactions_mD4B7D1E2725A5F60F76743C26011991BE5F5DE52,
+	OSXStoreBindings_RefreshAppReceipt_m4B9ECD88BA3E326D17DCA0679EFF6ED66D675625,
+	OSXStoreBindings_AddTransactionObserver_m8A402A9D588C05131997330E6094ACEAB4126B92,
+	OSXStoreBindings_SetApplicationUsername_m77F969D976CD9798B1924554B4B78E0C37AB55CB,
+	OSXStoreBindings_RetrieveProducts_m72448C8AC79D468D9E30B181C1D6CCBB44234745,
+	OSXStoreBindings_Purchase_mF0A9FEBB05E5E1A197A92CFD3B3A3EDE3E1743B8,
+	OSXStoreBindings_FinishTransaction_m673BB3D273F4BC82E013BB532286370BD1FCA335,
+	OSXStoreBindings_get_appReceipt_mE5D943D8CA65F26CB455790C9C4E1A80FFD8351C,
+	OSXStoreBindings_get_canMakePayments_m4685D0E916AA2A0F1858A119311FC3B684311508,
+	OSXStoreBindings_get_simulateAskToBuy_mE002324D1785B5F760CFAF99CBA88F62A6FB9DC8,
+	OSXStoreBindings_set_simulateAskToBuy_mF1A64A166C9FFFB2B2DA3C1E1627E1B6F3AACD1D,
+	OSXStoreBindings_SetStorePromotionOrder_mCB6BD5802C0E550CEE75C6D50209D1F7969D98AF,
+	OSXStoreBindings_SetStorePromotionVisibility_m9F321712514487F5D091F101660130527BE6DF3E,
+	OSXStoreBindings_GetTransactionReceiptForProductId_mB592DE41EBA85AAFAB55C19F6832BE45FA1DF8DC,
+	OSXStoreBindings_InterceptPromotionalPurchases_m8E0B47856EDD0EC273DE13DD62EBC48A27C9B4BF,
+	OSXStoreBindings_ContinuePromotionalPurchases_mA4749703FB5136922BD211E5C4ED80B731F6290E,
+	OSXStoreBindings__ctor_m62C3AA5C49EFE7E303AEEF295006C77332274AA7,
+};
+static const int32_t s_InvokerIndices[50] = 
+{
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	4395,
+	5392,
+	5392,
+	5392,
+	4395,
+	4395,
+	2494,
+	2494,
+	5294,
+	5209,
+	5209,
+	4310,
+	4395,
+	2494,
+	3913,
+	5392,
+	5392,
+	5392,
+	4395,
+	5392,
+	5392,
+	5392,
+	4395,
+	4395,
+	2494,
+	2494,
+	5294,
+	5209,
+	5209,
+	4310,
+	4395,
+	2494,
+	3913,
+	5392,
+	5392,
+	5392,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_Apple_CodeGenModule;
+const Il2CppCodeGenModule g_Apple_CodeGenModule = 
+{
+	"Apple.dll",
+	50,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};

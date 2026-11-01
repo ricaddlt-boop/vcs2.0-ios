@@ -1,0 +1,180 @@
+workflows:
+  ios-ipa-unsigned:
+    name: Compilar IPA iOS (Sin firma)
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Reconstruir archivos grandes divididos (.part*)
+        script: |
+          find . -name "*.part00" | while read part0; do
+            orig="${part0%.part00}"
+            echo "Reconstruyendo archivo: $orig"
+            cat "${orig}.part"* > "$orig"
+            rm -f "${orig}.part"*
+            ls -lh "$orig"
+          done
+      - name: Dar permisos de ejecucion a scripts
+        script: |
+          find . -name "*.sh" -exec chmod +x {} \; || true
+          if [ -d "Il2CppOutputProject/IL2CPP/build/deploy_arm64" ]; then
+            chmod -R +x Il2CppOutputProject/IL2CPP/build/deploy_arm64 || true
+          fi
+          if [ -d "Il2CppOutputProject/IL2CPP/build/deploy" ]; then
+            chmod -R +x Il2CppOutputProject/IL2CPP/build/deploy || true
+          fi
+      - name: Configurar proyecto Xcode para compilacion sin firma
+        script: |
+          echo "Desactivando requisitos de firma en project.pbxproj..."
+          sed -i '' 's/CODE_SIGN_STYLE = Automatic;/CODE_SIGN_STYLE = Manual;/g' Unity-iPhone.xcodeproj/project.pbxproj || true
+          sed -i '' 's/CODE_SIGN_IDENTITY = "iPhone Developer";/CODE_SIGN_IDENTITY = "";/g' Unity-iPhone.xcodeproj/project.pbxproj || true
+          sed -i '' 's/"CODE_SIGN_IDENTITY\[sdk=iphoneos\*\]" = "iPhone Developer";/"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";/g' Unity-iPhone.xcodeproj/project.pbxproj || true
+      - name: Instalar CocoaPods si existe
+        script: |
+          if [ -f "Podfile" ]; then
+            echo "Instalando dependencias CocoaPods con hook sin firma..."
+            pod install --repo-update || pod install
+          else
+            echo "Sin Podfile, compilando directamente el proyecto Xcode"
+          fi
+      - name: Compilar aplicacion iOS (Release - sin firma requerida)
+        script: |
+          if [ -d "Unity-iPhone.xcworkspace" ]; then
+            echo "Compilando mediante Workspace..."
+            xcodebuild \
+              -workspace Unity-iPhone.xcworkspace \
+              -scheme Unity-iPhone \
+              -configuration Release \
+              -destination 'generic/platform=iOS' \
+              -derivedDataPath build \
+              CODE_SIGN_IDENTITY="" \
+              CODE_SIGNING_REQUIRED=NO \
+              CODE_SIGNING_ALLOWED=NO \
+              CODE_SIGN_STYLE=Manual \
+              DEVELOPMENT_TEAM="" \
+              EXPANDED_CODE_SIGN_IDENTITY="" \
+              COMPILER_INDEX_STORE_ENABLE=NO \
+              build
+          else
+            echo "Compilando mediante Project..."
+            xcodebuild \
+              -project Unity-iPhone.xcodeproj \
+              -scheme Unity-iPhone \
+              -configuration Release \
+              -destination 'generic/platform=iOS' \
+              -derivedDataPath build \
+              CODE_SIGN_IDENTITY="" \
+              CODE_SIGNING_REQUIRED=NO \
+              CODE_SIGNING_ALLOWED=NO \
+              CODE_SIGN_STYLE=Manual \
+              DEVELOPMENT_TEAM="" \
+              EXPANDED_CODE_SIGN_IDENTITY="" \
+              COMPILER_INDEX_STORE_ENABLE=NO \
+              build
+          fi
+      - name: Empaquetar a archivo .IPA
+        script: |
+          APP_PATH=$(find build/Build/Products/Release-iphoneos -maxdepth 1 -name "*.app" | head -n 1)
+          if [ -z "$APP_PATH" ]; then
+            echo "Error: No se encontro el archivo .app compilado"
+            exit 1
+          fi
+          echo "Empaquetando App: $APP_PATH"
+          mkdir -p Payload
+          cp -r "$APP_PATH" Payload/
+          zip -r -q VCS2.0-iOS.ipa Payload
+          ls -lh VCS2.0-iOS.ipa
+    artifacts:
+      - "*.ipa"
+
+  ios-release:
+    name: Compilar IPA iOS para Sideload (Codemagic)
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Reconstruir archivos grandes divididos (.part*)
+        script: |
+          find . -name "*.part00" | while read part0; do
+            orig="${part0%.part00}"
+            echo "Reconstruyendo archivo: $orig"
+            cat "${orig}.part"* > "$orig"
+            rm -f "${orig}.part"*
+            ls -lh "$orig"
+          done
+      - name: Dar permisos de ejecucion a scripts
+        script: |
+          find . -name "*.sh" -exec chmod +x {} \; || true
+          if [ -d "Il2CppOutputProject/IL2CPP/build/deploy_arm64" ]; then
+            chmod -R +x Il2CppOutputProject/IL2CPP/build/deploy_arm64 || true
+          fi
+          if [ -d "Il2CppOutputProject/IL2CPP/build/deploy" ]; then
+            chmod -R +x Il2CppOutputProject/IL2CPP/build/deploy || true
+          fi
+      - name: Configurar proyecto Xcode para compilacion sin firma
+        script: |
+          echo "Desactivando requisitos de firma en project.pbxproj..."
+          sed -i '' 's/CODE_SIGN_STYLE = Automatic;/CODE_SIGN_STYLE = Manual;/g' Unity-iPhone.xcodeproj/project.pbxproj || true
+          sed -i '' 's/CODE_SIGN_IDENTITY = "iPhone Developer";/CODE_SIGN_IDENTITY = "";/g' Unity-iPhone.xcodeproj/project.pbxproj || true
+          sed -i '' 's/"CODE_SIGN_IDENTITY\[sdk=iphoneos\*\]" = "iPhone Developer";/"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";/g' Unity-iPhone.xcodeproj/project.pbxproj || true
+      - name: Instalar CocoaPods si existe
+        script: |
+          if [ -f "Podfile" ]; then
+            echo "Instalando dependencias CocoaPods con hook sin firma..."
+            pod install --repo-update || pod install
+          else
+            echo "Sin Podfile, compilando directamente el proyecto Xcode"
+          fi
+      - name: Compilar aplicacion iOS (Release - sin firma requerida)
+        script: |
+          if [ -d "Unity-iPhone.xcworkspace" ]; then
+            echo "Compilando mediante Workspace..."
+            xcodebuild \
+              -workspace Unity-iPhone.xcworkspace \
+              -scheme Unity-iPhone \
+              -configuration Release \
+              -destination 'generic/platform=iOS' \
+              -derivedDataPath build \
+              CODE_SIGN_IDENTITY="" \
+              CODE_SIGNING_REQUIRED=NO \
+              CODE_SIGNING_ALLOWED=NO \
+              CODE_SIGN_STYLE=Manual \
+              DEVELOPMENT_TEAM="" \
+              EXPANDED_CODE_SIGN_IDENTITY="" \
+              COMPILER_INDEX_STORE_ENABLE=NO \
+              build
+          else
+            echo "Compilando mediante Project..."
+            xcodebuild \
+              -project Unity-iPhone.xcodeproj \
+              -scheme Unity-iPhone \
+              -configuration Release \
+              -destination 'generic/platform=iOS' \
+              -derivedDataPath build \
+              CODE_SIGN_IDENTITY="" \
+              CODE_SIGNING_REQUIRED=NO \
+              CODE_SIGNING_ALLOWED=NO \
+              CODE_SIGN_STYLE=Manual \
+              DEVELOPMENT_TEAM="" \
+              EXPANDED_CODE_SIGN_IDENTITY="" \
+              COMPILER_INDEX_STORE_ENABLE=NO \
+              build
+          fi
+      - name: Empaquetar a archivo .IPA
+        script: |
+          APP_PATH=$(find build/Build/Products/Release-iphoneos -maxdepth 1 -name "*.app" | head -n 1)
+          if [ -z "$APP_PATH" ]; then
+            echo "Error: No se encontro el archivo .app compilado"
+            exit 1
+          fi
+          echo "Empaquetando App: $APP_PATH"
+          mkdir -p Payload
+          cp -r "$APP_PATH" Payload/
+          zip -r -q VCS2.0-iOS.ipa Payload
+          ls -lh VCS2.0-iOS.ipa
+    artifacts:
+      - "*.ipa"
