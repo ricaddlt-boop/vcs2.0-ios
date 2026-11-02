@@ -1514,6 +1514,10 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_CanvasGroup_set_blocksRaycasts();
 		Register_UnityEngine_CanvasGroup_set_blocksRaycasts();
 
+		//System.Void UnityEngine.CanvasGroup::set_ignoreParentGroups(System.Boolean)
+		void Register_UnityEngine_CanvasGroup_set_ignoreParentGroups();
+		Register_UnityEngine_CanvasGroup_set_ignoreParentGroups();
+
 		//System.Void UnityEngine.CanvasGroup::set_interactable(System.Boolean)
 		void Register_UnityEngine_CanvasGroup_set_interactable();
 		Register_UnityEngine_CanvasGroup_set_interactable();
@@ -1793,6 +1797,10 @@ void RegisterAllStrippedInternalCalls()
 	//End Registrations for type : UnityEngine.CubemapArray
 
 	//Start Registrations for type : UnityEngine.Cursor
+
+		//System.Boolean UnityEngine.Cursor::get_visible()
+		void Register_UnityEngine_Cursor_get_visible();
+		Register_UnityEngine_Cursor_get_visible();
 
 		//System.Void UnityEngine.Cursor::SetCursor_Injected(UnityEngine.Texture2D,UnityEngine.Vector2&,UnityEngine.CursorMode)
 		void Register_UnityEngine_Cursor_SetCursor_Injected();

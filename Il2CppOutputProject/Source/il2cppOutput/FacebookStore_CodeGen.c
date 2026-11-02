@@ -41,14 +41,14 @@ static const int32_t s_InvokerIndices[12] =
 	0,
 	0,
 	0,
-	5209,
-	5392,
-	4395,
-	4395,
-	2494,
-	2494,
-	3227,
-	5392,
+	5217,
+	5400,
+	4404,
+	4404,
+	2506,
+	2506,
+	3239,
+	5400,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_FacebookStore_CodeGenModule;
 const Il2CppCodeGenModule g_FacebookStore_CodeGenModule = 
